@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+<h2> User Information</h2>
+<br>
+
+<form th:action="@{/saveUser}" th:object="${user}" method="post">
+
+    Name: <input th:field="*{name}" type="text"/>
+    <br><br>
+    Job: <input th:field="*{job}" type="text"/>
+    <br><br>
+    Year: <input th:field="*{yearOfBirth}" type="text"/>
+    <br><br>
+    <input type="submit" value="OK">
+
+    <input type="hidden" th:field="*{id}"/>
+
+</form>
+</body>
+</html>
