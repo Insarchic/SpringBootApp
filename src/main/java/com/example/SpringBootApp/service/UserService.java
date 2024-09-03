@@ -1,16 +1,20 @@
 package com.example.SpringBootApp.service;
 
-
 import com.example.SpringBootApp.model.User;
+import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
+@Service
 public interface UserService {
-    void saveUser(User user);
+    List<User> findAll();
 
-    User getUser(Long id);
+    User findById(long id);
 
-    List<User> getAllUsers();
+    void save(User user);
 
-    void deleteUser(Long id);
+    void update(User user);
+
+    void deleteById(long id);
 }

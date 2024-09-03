@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование профиля</title>
+</head>
+<body>
+<form th:action="@{/{id}}" th:object="${user}" th:method="patch">
+
+    Имя: <input th:field="*{name}" type="text"/>
+    <br><br>
+    Работа: <input th:field="*{job}" type="text"/>
+    <br><br>
+    Год рождения: <input th:field="*{yearOfBirth}" type="text"/>
+    <br><br>
+    <input type="submit" value="Обновить">
+
+    <input type="hidden" th:field="*{id}"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="EN">
+<meta charset="UTF-8">
+
+<head>
+  <title>Детали пользователя</title>
+</head>
+<body>
+<h1>Детали пользователя</h1>
+<table>
+  <thead>
+  <tr>
+
+    <th>Имя</th>
+    <th>Работа</th>
+    <th>Год рождения</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.job}"></td>
+    <td th:text="${user.yearOfBirth}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

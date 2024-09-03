@@ -1,17 +1,20 @@
 package com.example.SpringBootApp.dao;
 
-
-
 import com.example.SpringBootApp.model.User;
+import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
+@Repository
 public interface UserDao {
-    void saveUser(User user);
+    List<User> findAll();
 
-    User getUser(Long id);
+    User findById(long id);
 
-    List<User> getAllUsers();
+    void save(User user);
 
-    void deleteUser(Long id);
+    void update(User user);
+
+    void deleteById(long id);
 }
