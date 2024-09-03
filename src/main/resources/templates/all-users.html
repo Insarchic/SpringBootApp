@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
-
 </head>
 <body>
 <h2>All Users</h2>
@@ -14,31 +13,26 @@
         <th>Job</th>
         <th>Year</th>
         <th>Operations</th>
-
     </tr>
-
-    <div th:each="user : ${allUsers}">
-
-        <tr>
-            <td th:text="${user.getName()}"></td>
-            <td th:text="${user.getJob()}"></td>
-            <td th:text="${user.getYearOfBirth()}"></td>
-            <td>
-                <button type="button"
-                        th:onclick="'window.location.href=\'' + @{/updateUser(userId=${user.id})} + '\''">Update</button>
-
-                <button type="button"
-                        th:onclick="'window.location.href=\'' + @{/deleteUser(userId=${user.id})} + '\''">Delete</button>
-            </td>
-        </tr>
-    </div>
-
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.job}"></td>
+        <td th:text="${user.yearOfBirth}"></td>
+        <td>
+            <form th:action="@{/editUser(userId=${user.id})}" method="get">
+                <input type="hidden" name="userId" th:value="${user.id}"/>
+                <button type="submit">Update</button>
+            </form>
+            <form th:action="@{/deleteUser}" method="post">
+                <input type="hidden" name="userId" th:value="${user.id}"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
 </table>
 <br>
-
-<input th:type="button" th:value="Add"
-onclick="window.location.href = 'addNewUser' "/>
-
-
+<form th:action="@{/addNewUser}" method="get">
+    <button type="submit">Add</button>
+</form>
 </body>
 </html>

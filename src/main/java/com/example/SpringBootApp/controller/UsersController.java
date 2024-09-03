@@ -5,14 +5,10 @@ import com.example.SpringBootApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-
 @Controller
 public class UsersController {
 
@@ -33,26 +29,31 @@ public class UsersController {
 
     @GetMapping("/addNewUser")
     public String addNewUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return "user-info";
     }
 
-    @RequestMapping("/saveUser")
+    @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";
     }
 
-    @GetMapping("/updateUser")
-    public String updateUser(@RequestParam("userId") Long id, Model model) {
+    @GetMapping("/editUser")
+    public String editUser(@RequestParam("userId") Long id, Model model) {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
-        return "user-info";
+        return "edit-user";
     }
 
-    @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("userId") Long id, Model model) {
+    @PostMapping("/updateUser")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.update(user);
+        return "redirect:/";
+    }
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(@RequestParam("userId") Long id) {
         userService.deleteUser(id);
         return "redirect:/";
     }

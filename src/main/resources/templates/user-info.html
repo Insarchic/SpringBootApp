@@ -5,7 +5,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-<h2> User Information</h2>
+<h2>User Information</h2>
 <br>
 
 <form th:action="@{/saveUser}" th:object="${user}" method="post">
@@ -16,10 +16,8 @@
     <br><br>
     Year: <input th:field="*{yearOfBirth}" type="text"/>
     <br><br>
-    <input type="submit" value="OK">
 
-    <input type="hidden" th:field="*{id}"/>
-
+    <input type="submit" value="OK"/>
 </form>
 </body>
 </html>
